@@ -1,17 +1,19 @@
 package services.services_Interface;
 
 
+import domain.Correction;
 import domain.Deviation;
+import domain.User;
 
 import java.util.List;
 
 public interface DeviationService {
 
-    void removeDeviation();
+    void addDeviation(Deviation deviation, User user);
 
-    void saveDeviation();
+    void removeDeviation(Deviation deviation, User user);
 
-    void updateDeviation();
+    void updateDeviation(Deviation deviation, User user);
 
     List<Deviation> findAllDeviation();
 
