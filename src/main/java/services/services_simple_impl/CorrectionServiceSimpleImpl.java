@@ -16,8 +16,8 @@ import java.util.List;
 public class CorrectionServiceSimpleImpl implements CorrectionService {
 
     private  final CorrectionRepository correctionRepository;
-
-    private static final Logger logger = LoggerFactory.getLogger(CorrectionServiceSimpleImpl.class);
+    //нужен ли тут логгер???
+    //private static final Logger logger = LoggerFactory.getLogger(CorrectionServiceSimpleImpl.class);
 
     @Autowired
     public CorrectionServiceSimpleImpl(CorrectionRepository correctionRepository) {
@@ -26,31 +26,41 @@ public class CorrectionServiceSimpleImpl implements CorrectionService {
 
     @Override
     public List<Correction> findAllCorectionsForDeviation(Deviation deviation) {
-        return null;
+        return this.correctionRepository.findByDeviation(deviation);
     }
 
     @Override
     public void addCorrection(Deviation deviation, Correction correction, User user) {
-
+        correction.setDateOfCorrection(deviation.getAppearsDate());
+        correction.getDateOfWorkOnDeviation();
+        correction.setDevForCorrect(deviation);//setDeviation
+        this.correctionRepository.save(correction);
     }
 
     @Override
     public void removeCorrection(Correction correction, User user) {
-
+        this.correctionRepository.delete(correction);
     }
 
     @Override
     public void updateCorrection(Correction correction, User user) {
-
+        correction.getCorrectionDescription();
+        this.correctionRepository.save(correction);
     }
 
     @Override
     public List<Correction> findCorrectionHistory(Correction correction) {
-        return null;
+       /* for (Correction corr:this.correctionRepository.findByCorrectionHistory(correction)){
+            return this.correctionRepository.findByCorrectionHistory(correction);
+        }*/
+        return null;//this.correctionRepository.fi;
     }
 
     @Override
-    public boolean hasHistory(Correction correction) {
+    public boolean hasHistory(Correction correction){
+        for (Correction corr:this.correctionRepository.findByHasHistory(correction)){
+            return true;
+        }
         return false;
     }
 }

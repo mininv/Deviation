@@ -12,9 +12,11 @@ public interface CorrectionRepository  extends JpaRepository<Correction, Long> {
 
     List<Correction> findByCorrectUser(User user);
 
-    List<Correction> findByDevForCorrect(Deviation deviation);
+    List<Correction> findByDateOfCorrection(Date dateOfCorrection);
 
-    List<Correction> findByPlaceOfDeviation (String placeOfDeviation);
+    List<Correction> findByDeviation(Deviation deviation);
+
+    List<Correction> findByHasHistory(Correction correction);
 
 }
 
