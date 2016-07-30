@@ -4,108 +4,128 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.xml.crypto.Data;
+import java.util.Date;
 
 @Entity
     public class Deviation {
-        @Id
-        @GeneratedValue
-        private long id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-        public Deviation(User creationByWho, String description) {
-            this.creationUser = creationByWho;
-            this.description = description;
-        }
+    public Deviation() {
+    }
 
-        private String description;
+    public Deviation(User creationByWho, String description) {
+        this.creationUser = creationByWho;
+        this.description = description;
+    }
 
-        public String authorOfDeviation;
+    private String description;
 
-        private String spotFixing;
+    private String placeOfAppear;
 
-        private Data date;
+    private Date appearsDate;
 
-        public long rootID;//параметр для создание дерева истории отклонения
+    private Date creationDate = new Date();
 
-        public Deviation replacedValue;//возвращает ссылку на исходник
+    private User creationUser;
 
-        public User creationUser;
+    //
+    private boolean deleted;
 
-        public long getId() {
-            return id;
-        }
+    private long rootID;//параметр для создание дерева истории отклонения
 
-        public void setId(int id) {
-            this.id = id;
-        }
+    private Deviation replacedValue;//возвращает ссылку на исходник
+    //
 
-        public void setId(long id) {
-            this.id = id;
-        }
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
 
-        public String getDescription() {
-            return description;
-        }
+    public Date getAppearsDate() {
+        return appearsDate;
+    }
 
-        public void setDescription(String description) {
-            this.description = description;
-        }
+    public void setAppearsDate(Date appearsDate) {
+        this.appearsDate = appearsDate;
+    }
 
-        public String getAuthorOfDeviation() {
-            return authorOfDeviation;
-        }
+    public Long getId() {
+        return id;
+    }
 
-        public void setAuthorOfDeviation(String authorOfDeviation) {
-            this.authorOfDeviation = authorOfDeviation;
-        }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-        public String getSpotFixing() {
-            return spotFixing;
-        }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-        public void setSpotFixing(String spotFixing) {
-            this.spotFixing = spotFixing;
-        }
+    public String getDescription() {
+        return description;
+    }
 
-        public Data getDate() {
-            return date;
-        }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-        public void setDate(Data date) {
-            this.date = date;
-        }
+    public String getPlaceOfAppear() {
+        return placeOfAppear;
+    }
 
-        public long getRootID() {
-            return rootID;
-        }
+    public void setPlaceOfAppear(String placeOfAppear) {
+        this.placeOfAppear = placeOfAppear;
+    }
 
-        public void setRootID(long rootID) {
-            this.rootID = rootID;
-        }
+    public long getRootID() {
+        return rootID;
+    }
 
-        public Deviation getReplacedValue() {
-            return replacedValue;
-        }
+    public void setRootID(long rootID) {
+        this.rootID = rootID;
+    }
 
-        public void setReplacedValue(Deviation replacedValue) {
-            this.replacedValue = replacedValue;
-        }
+    public Deviation getReplacedValue() {
+        return replacedValue;
+    }
 
-        public User getCreationUser() {
-            return creationUser;
-        }
+    public void setReplacedValue(Deviation replacedValue) {
+        this.replacedValue = replacedValue;
+    }
 
-        public void setCreationUser(User creationUser) {
-            this.creationUser = creationUser;
-        }
+    public User getCreationUser() {
+        return creationUser;
+    }
 
-        @Override
-        public String toString() {
-            return "Deviation{" +
-                    "id=" + id +
-                    ", description='" + description + '\'' +
-                    ", authorOfDeviation='" + authorOfDeviation + '\'' +
-                    ", spotFixing='" + spotFixing + '\'' +
-                    ", date=" + date +
-                    '}';
-        }
+    public void setCreationUser(User creationUser) {
+        this.creationUser = creationUser;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    @Override
+    public String toString() {
+        return "Deviation{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", placeOfAppear='" + placeOfAppear + '\'' +
+                ", appearsDate=" + appearsDate +
+                ", creationDate=" + creationDate +
+                ", creationUser=" + creationUser +
+                ", deleted=" + deleted +
+                ", rootID=" + rootID +
+                ", replacedValue=" + replacedValue +
+                '}';
+    }
 }
