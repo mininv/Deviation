@@ -15,8 +15,7 @@ import java.util.Date;
     public Deviation() {
     }
 
-    public Deviation(User creationByWho, String description) {
-        this.creationUser = creationByWho;
+    public Deviation(String description) {
         this.description = description;
     }
 
