@@ -1,4 +1,4 @@
-package domain;
+package ru.od.deviation_control.services.domain;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -13,7 +13,7 @@ public class User {
 
     private String contact;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private UserRole userRole;
 
     private String firstName;
@@ -102,7 +102,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserRepository{" +
                 "id=" + id +
                 ", contact='" + contact + '\'' +
                 ", userRole=" + userRole +

@@ -1,12 +1,11 @@
-package services.services_simple_impl;
+package ru.od.deviation_control.services.services_simple_impl;
 
 import com.vaadin.spring.annotation.SpringComponent;
-import domain.Deviation;
-import domain.User;
+import ru.od.deviation_control.services.domain.Deviation;
+import ru.od.deviation_control.services.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import repositories.CorrectionRepository;
-import repositories.DeviationRepository;
-import services.services_Interface.DeviationService;
+import ru.od.deviation_control.services.repositories.DeviationRepository;
+import ru.od.deviation_control.services.services_Interface.DeviationService;
 
 import java.util.List;
 

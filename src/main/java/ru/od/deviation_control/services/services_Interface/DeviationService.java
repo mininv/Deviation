@@ -1,9 +1,8 @@
-package services.services_Interface;
+package ru.od.deviation_control.services.services_Interface;
 
 
-import domain.Correction;
-import domain.Deviation;
-import domain.User;
+import ru.od.deviation_control.services.domain.Deviation;
+import ru.od.deviation_control.services.domain.User;
 
 import java.util.List;
 

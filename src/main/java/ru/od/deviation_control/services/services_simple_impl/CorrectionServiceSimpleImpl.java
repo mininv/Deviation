@@ -1,12 +1,12 @@
-package services.services_simple_impl;
+package ru.od.deviation_control.services.services_simple_impl;
 
 import com.vaadin.spring.annotation.SpringComponent;
-import domain.Correction;
-import domain.Deviation;
-import domain.User;
+import ru.od.deviation_control.services.domain.Correction;
+import ru.od.deviation_control.services.domain.Deviation;
+import ru.od.deviation_control.services.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import repositories.CorrectionRepository;
-import services.services_Interface.CorrectionService;
+import ru.od.deviation_control.services.repositories.CorrectionRepository;
+import ru.od.deviation_control.services.services_Interface.CorrectionService;
 
 import java.util.List;
 
@@ -27,8 +27,7 @@ public class CorrectionServiceSimpleImpl implements CorrectionService {
     }
 
     @Override
-    public void addCorrection(Deviation deviation, Correction correction, User user) {
-        correction.setDeviation(deviation);
+    public void addCorrection(Correction correction) {
         this.correctionRepository.save(correction);
     }
 

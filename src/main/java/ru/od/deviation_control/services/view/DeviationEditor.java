@@ -1,22 +1,27 @@
-package view;
+package ru.od.deviation_control.services.view;
 
 
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.spring.annotation.SpringComponent;
+import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import domain.Deviation;
+import ru.od.deviation_control.services.domain.Deviation;
 import org.springframework.beans.factory.annotation.Autowired;
-import repositories.DeviationRepository;
+import ru.od.deviation_control.services.repositories.DeviationRepository;
 
+@SpringComponent
+@UIScope
 public class DeviationEditor extends VerticalLayout {
 
     private final DeviationRepository repository;
     private Deviation deviation;
 
-    TextField firstName = new TextField("First name");
-    TextField lastName = new TextField("Last name");
+
+    TextField description = new TextField("Description");
+    TextField placeOfAppear = new TextField("Place of Appear");
 
     Button save = new Button("Save", FontAwesome.SAVE);
     Button cancel = new Button("Cancel");
@@ -27,7 +32,7 @@ public class DeviationEditor extends VerticalLayout {
     public DeviationEditor(DeviationRepository repository) {
         this.repository = repository;
 
-        addComponents(firstName, lastName, actions);
+        addComponents(description, placeOfAppear, actions);
 
         // Configure and style components
         setSpacing(true);
@@ -68,7 +73,7 @@ public class DeviationEditor extends VerticalLayout {
         // A hack to ensure the whole form is visible
         save.focus();
         // Select all text in firstName field automatically
-        firstName.selectAll();
+        description.selectAll();
     }
 
     public void setChangeHandler(ChangeHandler h) {

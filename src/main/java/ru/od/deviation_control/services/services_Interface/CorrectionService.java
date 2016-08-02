@@ -1,8 +1,8 @@
-package services.services_Interface;
+package ru.od.deviation_control.services.services_Interface;
 
-import domain.Correction;
-import domain.Deviation;
-import domain.User;
+import ru.od.deviation_control.services.domain.Correction;
+import ru.od.deviation_control.services.domain.Deviation;
+import ru.od.deviation_control.services.domain.User;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public interface CorrectionService {
 
     List<Correction> findAllCorectionsForDeviation(Deviation deviation);
 
-    void addCorrection(Deviation deviation, Correction correction, User user);
+    void addCorrection(Correction correction);
 
     void removeCorrection(Correction correction, User user);
 

@@ -1,18 +1,27 @@
+package ru.od.deviation_control.services;
+
 import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.annotations.Widgetset;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.server.VaadinServlet;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
-import domain.Deviation;
+import ru.od.deviation_control.services.domain.Deviation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import repositories.DeviationRepository;
-import view.DeviationEditor;
+import ru.od.deviation_control.services.repositories.DeviationRepository;
+import ru.od.deviation_control.services.view.DeviationEditor;
+
+import javax.servlet.annotation.WebServlet;
 
 @SpringUI
 @Theme("valo")
+
 public class Vaadin  extends UI{
+
 
     private final DeviationRepository repo;
 
@@ -46,9 +55,9 @@ public class Vaadin  extends UI{
         mainLayout.setSpacing(true);
 
         grid.setHeight(300, Unit.PIXELS);
-        grid.setColumns("id", "firstName", "lastName");
+        grid.setColumns("id", "description");
 
-        filter.setInputPrompt("Filter by last name");
+        filter.setInputPrompt("Filter by place of appear");
 
         // Hook logic to components
 
@@ -90,5 +99,6 @@ public class Vaadin  extends UI{
         }
     }
 // end::listCustomers[]
+
 
 }

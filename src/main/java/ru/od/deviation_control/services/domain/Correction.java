@@ -1,8 +1,6 @@
-package domain;
+package ru.od.deviation_control.services.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -14,15 +12,18 @@ public class Correction {
     public Correction() {
     }
 
-    public Correction(Deviation devForCorrect, User correctUser) {
-        this.deviation = devForCorrect;
-        this.correctionUser = correctUser;
+    public Correction(Deviation deviation) {
+        this.deviation = deviation;
     }
 
+
+
+    @ManyToOne
     private User correctionUser;
 
     private String correctionDescription;
 
+    @ManyToOne
     private Deviation deviation;
 
     private Date dateOfCorrection = new Date();//дата добавления инф.
@@ -39,7 +40,7 @@ public class Correction {
 
     private long rootID;//параметр для создание дерева истории отклонения
 
-    private Correction replacedValue;//возвращает ссылку на исходник
+    //private Correction replacedValue;//возвращает ссылку на исходник
 
     //
 
@@ -116,13 +117,13 @@ public class Correction {
         this.rootID = rootID;
     }
 
-    public Correction getReplacedValue() {
+    /*public Correction getReplacedValue() {
         return replacedValue;
     }
 
     public void setReplacedValue(Correction replacedValue) {
         this.replacedValue = replacedValue;
-    }
+    }*/
 
     public boolean isHasHistory() {
         return hasHistory;
@@ -144,7 +145,7 @@ public class Correction {
                 ", closesDeviation=" + closesDeviation +
                 ", deleted=" + deleted +
                 ", rootID=" + rootID +
-                ", replacedValue=" + replacedValue +
+                //", replacedValue=" + replacedValue +
                 '}';
     }
 }

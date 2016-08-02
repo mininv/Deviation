@@ -1,9 +1,6 @@
-package domain;
+package ru.od.deviation_control.services.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.xml.crypto.Data;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -27,6 +24,7 @@ import java.util.Date;
 
     private Date creationDate = new Date();
 
+    @ManyToOne
     private User creationUser;
 
     //
@@ -34,6 +32,7 @@ import java.util.Date;
 
     private long rootID;//параметр для создание дерева истории отклонения
 
+    @ManyToOne
     private Deviation replacedValue;//возвращает ссылку на исходник
     //
 
